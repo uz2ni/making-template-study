@@ -11,6 +11,9 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    css: [
+      '~/assets/css/common.css'
     ]
   },
   /*
@@ -34,6 +37,7 @@ module.exports = {
         })
       }
     }
+    //extractCSS: true // [19.10.25]ann - css사용 시 추가
   }
 }
 
