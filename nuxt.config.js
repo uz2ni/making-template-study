@@ -11,11 +11,11 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ],
-    css: [
-      '~/assets/css/common.css'
     ]
   },
+  css: [
+    '~/assets/css/common.css'
+  ],
   /*
   ** Customize the progress bar color
   */
