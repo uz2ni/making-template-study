@@ -1,150 +1,138 @@
+<!--suppress ALL -->
 <template>
   <!-- Component Detail Setting -->
   <div class="edit-frame">
-    <!-- 타이틀 텍스트 -->
-    <template v-if="activeComp === 'comp1'">
-      <div class="comp-tit">
-        <p>타이틀 텍스트</p>
-      </div>
-      <article>
-        <label><input type="radio" name="size" value="small"> 작게</label>
-        <label><input type="radio" name="size" value="lazy" checked> 크게</label>
-      </article>
-      <article>
-        <label><input type="radio" name="align" value="left"> 왼쪽 정렬</label>
-        <label><input type="radio" name="align" value="center" checked> 가운데 정렬</label>
-      </article>
-      <article>
-        <textarea placeholder="타이틀을 입력해주세요"></textarea>
-      </article>
-    </template>
-    <!-- 본문형 텍스트 -->
-    <template v-else-if="activeComp === 'comp2'">
-      <div class="comp-tit">
-        <p>텍스트</p>
-      </div>
-      <article>
-        <label><input type="radio" name="textType" value="body" checked> 본문형</label>
-        <label><input type="radio" name="textType" value="list"> 목록형</label>
-      </article>
-      <article>
-        <label><input type="radio" name="align" value="left"> 왼쪽 정렬</label>
-        <label><input type="radio" name="align" value="center" checked> 가운데 정렬</label>
-      </article>
-      <article>
-        <textarea placeholder="내용을 입력해주세요"></textarea>
-      </article>
-    </template>
-    <!-- 목록형 텍스트 -->
-    <template v-else-if="activeComp === 'comp3'">
-      <div class="comp-tit">
-        <p>텍스트</p>
-      </div>
-      <article>
-        <label><input type="radio" name="textType" value="body"> 본문형</label>
-        <label><input type="radio" name="textType" value="list" checked> 목록형</label>
-      </article>
-      <article>
-        <label><input type="radio" name="listType" value="order" checked> 번호형</label>
-        <label><input type="radio" name="listType" value="bullet"> 기호형</label>
-      </article>
-      <article>
-        <label><input type="radio" name="align" value="left"> 왼쪽 정렬</label>
-        <label><input type="radio" name="align" value="center" checked> 가운데 정렬</label>
-      </article>
-      <article>
-        <textarea placeholder="내용을 입력해주세요"></textarea>
-      </article>
-    </template>
-    <!-- 이미지 한장 :: 이미지 & 텍스트+이미지 -->
-    <template v-else-if="activeComp === 'comp4'">
-      <div class="comp-tit">
-        <p>이미지</p>
-        <button type="button">이미지 올리기</button>
-      </div>
-      <article>
-        <label><input type="checkbox" name="useText" value="title"> 타이틀 쓰기</label>
-        <label><input type="checkbox" name="useText" value="desc"> 설명 쓰기</label>
-        <label><input type="checkbox" name="useText" value="imgView"> 이미지 크게 보기 (뷰어)</label>
-      </article>
-      <article>
-        <input type="text" name="imgTitle" placeholder="타이틀 입력">
-        <textarea placeholder="내용을 입력하세요"></textarea>
-      </article>
-    </template>
-    <!-- 이미지 여러장 :: 이미지 + 텍스트 -->
-    <template v-else-if="activeComp === 'comp5'">
-      <div class="comp-tit">
-        <p>이미지 여러 장</p>
-        <button type="button">이미지 올리기</button>
-      </div>
-      <article>
-        <label><input type="radio" name="alignType" value="imgLeft"> 이미지 왼쪽</label>
-        <label><input type="radio" name="alignType" value="imgRight"> 이미지 오른쪽</label>
-        <label><input type="radio" name="alignType" value="imgOne"> 1단 이미지</label>
-        <label><input type="radio" name="alignType" value="imgTwo"> 2단 이미지</label>
-      </article>
-      <article>
-        <label><input type="checkbox" name="useText" value="title"> 타이틀 쓰기</label>
-        <label><input type="checkbox" name="useText" value="desc"> 설명 쓰기</label>
-        <label><input type="checkbox" name="useText" value="imgView"> 이미지 크게 보기 (뷰어)</label>
-      </article>
-      <article>
-        <input type="text" name="imgTitle" placeholder="타이틀 입력">
-        <textarea placeholder="내용을 입력하세요"></textarea>
-      </article>
-    </template>
-    <!-- 이미지 여러장 :: 이미지 -->
-    <template v-else-if="activeComp === 'comp6'">
-      <div class="comp-tit">
-        <p>이미지 여러 장</p>
-        <button type="button">이미지 올리기</button>
-      </div>
-      <article>
-        <label><input type="radio" name="alignType" value="imgOne" checked> 1단 이미지</label>
-        <label><input type="radio" name="alignType" value="imgTwo"> 2단 이미지</label>
-        <label><input type="radio" name="alignType" value="imgThree"> 3단 이미지</label>
-      </article>
-      <article>
-        <input type="text" name="imgTitle" placeholder="타이틀">
-      </article>
-    </template>
-    <!-- 지도 -->
-    <template v-else-if="activeComp === 'comp7'">
-      <div class="comp-tit">
-        <p>지도</p>
-        <button type="button">지도에서 위치 선택</button>
-      </div>
-      <article>
-        <input type="text" name="pivotName" placeholder="업체명을 입력해 주세요">
-        <input type="text" name="pivotAddr" placeholder="주소를 입력해 주세요">
-      </article>
-    </template>
-    <!-- 구분선 -->
-    <template v-else-if="activeComp === 'comp8'">
-      <div class="comp-tit">
-        <p>구분선</p>
-      </div>
-      <article>
-        <label><input type="radio" name="lineType" value="blank" checked> 공백</label>
-        <label><input type="radio" name="lineType" value="solid"> 실선</label>
-        <label><input type="radio" name="lineType" value="dotted"> 실선</label>
-      </article>
-    </template>
+    <!-- 테스트 버튼 : 삭제 예정 -->
+    <div class="comp-test" style="margin-bottom:30px;">
+      <button type="button" @click="activeCompId = 'comp1'">타이틀</button>
+      <button type="button" @click="activeCompId = 'comp2'">본문형 텍스트</button>
+      <button type="button" @click="activeCompId = 'comp3'">이미지 한장</button>
+      <button type="button" @click="activeCompId = 'comp4'">이미지 여러장 :: 이미지 + 텍스트</button>
+      <button type="button" @click="activeCompId = 'comp5'">이미지 여러장 :: 이미지</button>
+      <button type="button" @click="activeCompId = 'comp6'">지도</button>
+      <button type="button" @click="activeCompId = 'comp7'">구분선</button>
+    </div>
+    <!-- 테스트 버튼 : 삭제 예정 [e] -->
+    <!-- 요소 상세 설정 컴포넌트 -->
+    <detail-set :compObj ="targetComp"
+                @cIMG_add="cIMG_add"
+                @imgFileSync="imgFileSync"
+    />
+    <pre>{{targetComp}}</pre>
   </div>
 </template>
 <script>
+  import detailSet from '~/components/detail-set'
   export default {
     name: "edit-frame",
+    components:{detailSet},
     data () {
       return {
-        activeComp: 'comp5'
+        activeCompId: 'comp5',
+        comps: [
+          {
+            /* 공통 */
+            id: 'comp1',
+            type: 'cTITLE', // 요소 타입
+            title: '타이틀', // 요소 타이틀 (기본값 각자 지정되어 있음)
+            /* 개별 */
+            size: 'lazy', // lazy(크게), small(작게) [ 기본값: lazy ]
+            align: 'left', // left(왼쪽), center(가운데) [ 기본값: left ]
+            value: '', // 타이틀에 입력 할 문구
+          },{
+            /* 공통 */
+            id: 'comp2',
+            type: 'cTXT', // 요소 타입
+            title: '텍스트', // 요소 타이틀 (기본값 각자 지정되어 있음)
+            /* 개별 */
+            txtType: 'body', // body(본문형), list(목록형) [ 기본값: main ]
+            listType: 'order', // order(번호형), bullet(기호형) [ 기본값: order ]
+            align: 'left', // left(왼쪽), center(가운데) [ 기본값: left ]
+          },{
+            /* 공통 */
+            id: 'comp3',
+            type: 'cIMG', // 요소 타입
+            title: '이미지 한장', // 요소 타이틀 (기본값 각자 지정되어 있음)
+            /* 개별 */
+            img: '', // 이미지 경로 값
+            useTitle: false, // 타이틀 쓰기 (기본값 false)
+            imgTitle: '',  // 이미지 타이틀 입력 문구
+            useDesc: false, // 타이틀 쓰기 (기본값 false)
+            imgDesc: '',  // 이미지 설명 입력 문구
+            useView: false, // 이미지 크게보기 (기본값 false)
+          },{
+            /* 공통 */
+            id: 'comp4',
+            type: 'cTXTIMGS', // 요소 타입
+            title: '이미지 여러장', // 요소 타이틀 (기본값 각자 지정되어 있음)
+            /* 개별 */
+            alignType: 'imgLeft',  // imgLeft(이미지 왼쪽), imgRight(이미지 오른쪽), imgOne(이미지 1단), imgTwo(이미지 2단) [ 기본값: imgLeft ]
+            useTitle: false, // 이미지 타이틀 쓰기 (기본값 false)
+            useDesc: false, // 이미지 설명 쓰기 (기본값 false)
+            useView: false, // 이미지 크게보기 (기본값 false)
+            imgs: [{
+              id: 'comp4_1', // 이미지 여러장 컴포넌트 내 단일 이미지컴포넌트 ID
+              img: '', // 이미지 경로 값
+              imgTitle: '',  // 이미지 타이틀 입력 문구
+              imgDesc: '',  // 이미지 설명 입력 문구
+            },{
+              id: 'comp4_2', // 이미지 여러장 컴포넌트 내 단일 이미지컴포넌트 ID
+              img: '', // 이미지 경로 값
+              imgTitle: '',  // 이미지 타이틀 입력 문구
+              imgDesc: '',  // 이미지 설명 입력 문구
+            }]
+          },{
+            /* 공통 */
+            id: 'comp5',
+            type: 'cIMGS', // 요소 타입
+            title: '이미지 여러장', // 요소 타이틀 (기본값 각자 지정되어 있음)
+            /* 개별 */
+            alignType: 'imgOne',  // imgOne(1단), twoOne(2단), threeOne(3단) [ 기본값: imgOne ]
+            imgTitle: '',  // 이미지 타이틀 입력 문구
+            imgs: [{
+              id: 'comp5_1', // 이미지 여러장 컴포넌트 내 단일 이미지컴포넌트 ID
+              img: '', // 이미지 경로 값
+            },{
+              id: 'comp5_2', // 이미지 여러장 컴포넌트 내 단일 이미지컴포넌트 ID
+              img: '', // 이미지 경로 값
+            }]
+          },{
+          // 미설계 : 속성 확인 필요
+            id: 'comp6',
+            type: 'cMAP', // 요소 타입
+            title: '지도' // 요소 타이틀 (기본값 각자 지정되어 있음)
+          },{
+            /* 공통 */
+            id: 'comp7',
+            type: 'cLINE', // 요소 타입
+            title: '구분선', // 요소 타이틀 (기본값 각자 지정되어 있음)
+            /* 개별 */
+            lineType: 'blank' // blank(공백), solid(실선), dotted(점선)
+          },
+        ]
+      }
+    },
+    computed: {
+      targetComp: function () {
+        return this.comps.filter((comp)=>{return comp.id === this.activeCompId})[0]
+      }
+    },
+    methods: {
+      cIMG_add (new_cIMGS) {
+        //console.log('new',new_cIMGS)
+        this.targetComp.imgs.push(new_cIMGS)
+      },
+      imgFileSync (file, idx) {
+        //console.log('file',file)
+        //console.log('idx',idx)
+        if (this.targetComp.type === 'cIMG') this.targetComp.img = file.name
+        else if (this.targetComp.type === 'cIMGS' || this.targetComp.type === 'cTXTIMGS') this.targetComp.imgs[idx].img = file.name
       }
     }
   }
 </script>
 
-<style scoped>
+<style>
   .edit-frame { width:540px; max-height:614px; border:1px solid #e2e4e5;}
   .edit-frame .comp-tit { padding:1rem;}
   .edit-frame .comp-tit p { display:inline-block; font-size:1.15rem; font-weight:bold; vertical-align:middle;}
