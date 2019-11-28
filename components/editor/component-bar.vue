@@ -75,7 +75,7 @@
 </script>
 
 <style scoped>
-#sideBar { position:relative; width:200px; min-height:500px; background:#fff; margin:20px; border:1px solid #d7d7d7;}
+#sideBar { position:relative; width:200px; background:#fff; border:1px solid #d7d7d7; margin:30px; height: auto;}
 .sideBarTit { position:relative; width:100%; height:40px; background:#eee; padding-left:15px; line-height:40px; }
 .sideBarlist1,.sideBarlist2  { position:relative; width:100%; height:auto; }
 .sideBarlist1 > li { position:relative; width:100%; border-bottom:1px solid #e5e5e5; line-height:40px;  }

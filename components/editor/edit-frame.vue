@@ -21,6 +21,7 @@
     <pre>{{targetComp}}</pre>
   </div>
 </template>
+
 <script>
   import detailSet from '~/components/detail-set'
   export default {
