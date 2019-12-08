@@ -17,10 +17,8 @@
 </script>
 
 <style scoped>
-  .preview_wrap {
+  .preview_wrap{
     width: 396px;
-    height: 726px;
-    margin-left: 20px;
     border: 2px solid #dadada;
     padding: 0 12px;
     border-radius: 35px;
@@ -37,5 +35,11 @@
     background-color: #fff;
     height: 617px;
     border: 2px solid #ddd;
+  }
+  .preview_con {
+    height: 100%;
+  }
+  .preview_body {
+    height: 80%;
   }
 </style>

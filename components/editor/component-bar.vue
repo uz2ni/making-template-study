@@ -67,10 +67,16 @@
 
 </script>
 
+<<<<<<< HEAD
 <style lang="css" scoped>
 
 #sideBar { position:absolute; width:200px; min-height:500px; background:#fff; margin-right:20px; border:1px solid #d7d7d7;}
 .sideBarTit { position:relative; width:100%; height:44px; background:#eee; padding-left:15px; line-height:44px; font-weight:600; }
+=======
+<style scoped>
+#sideBar { position:relative; width:200px; background:#fff; border:1px solid #d7d7d7; margin:30px; height: auto;}
+.sideBarTit { position:relative; width:100%; height:40px; background:#eee; padding-left:15px; line-height:40px; }
+>>>>>>> f2b129a306e52531cf0c5a09393f8d1a05cb236e
 .sideBarlist1,.sideBarlist2  { position:relative; width:100%; height:auto; }
 .sideBarlist1 > li { position:relative; width:100%; border-bottom:1px solid #e5e5e5; line-height:40px; }
 .sideBarlist1 > li > ul { max-height:0; overflow:hidden; transition: all 0.5s ease-out -0.3s;}
