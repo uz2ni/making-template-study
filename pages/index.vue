@@ -2,30 +2,16 @@
   <div class="editor-wrap">
     <header>
       <div class="cont-wrap">
-        <div class="cont-tit">타이틀 타이틀 타이틀 타이틀</div>
+        <div class="cont-tit"><editable-text :default="defaultTitle"/></div>
         <div class="cont-url">http://urlname.i-on.net</div>
       </div>
     </header>
     <section>
-      <!-- 페이지 추가 영역 -->
-      <div class="page-view">
-        <div v-show="isShowList">
-          <div class="page-view-list"> <!-- 페이지 추가 리스트 -->
-            <div class="page-view-col" v-for="(page,index) in pageList" v-bind:key="index">
-              <span>{{ page.title }}</span>
-              <button @click="removePage(index)">X</button>
-            </div>
-          </div>
-          <div class="page-add-area"> <!-- 페이지 추가 버튼 -->
-            <button @click="addPage">페이지 추가</button>
-          </div>
-        </div>
-        <div class="page-view-toggle"> <!-- 보이기/숨기기 -->
-          <button @click="listToggle">{{ toggleTitle }}</button>
-        </div>
-      </div>
-      <!-- //페이지 추가 영역 -->
-      <div class="edit-area">
+      <page-list @childPageList="parentEditAreaUpdate"></page-list><!-- ann, 페이지 추가 영역 -->
+      <div class="edit-area" v-for="(page,index) in pageList" v-bind:key="index" v-show="page.isFocus">
+        <!--test info-->
+        <div style="position:absolute; z-index:1000; background-color:yellow;">[test]<br> index: {{index}}, page title: {{page.title}}</div>
+        <!--//test info-->
         <component-bar></component-bar> <!--chloe-->
         <preview-frame></preview-frame> <!--mary-->
         <edit-frame></edit-frame> <!--daisy-->
@@ -40,43 +26,35 @@
 </template>
 
 <script>
+import EditableText from '~/components/utils/editable-text'
+import PageList from '~/components/page-list'
 import ComponentBar from '~/components/editor/component-bar'
 import PreviewFrame from '~/components/editor/preview-frame'
 import EditFrame from '~/components/editor/edit-frame'
 export default {
   components: {
+    EditableText,
+    PageList,
     ComponentBar,
     PreviewFrame,
     EditFrame,
   },
   data() {
     return {
-      pageList: [
-        { title: "홈" },
-        { title: "메뉴" },
-        { title: "게시판" },
-        { title: "오시는길" }
-      ],
-      toggleTitle: "숨기기",
-      isShowList: true
+      defaultTitle: "i-on page title",
+      pageList: null
     }
   },
   methods: {
     save() {
       alert('save test');
     },
-    addPage() { // 페이지 리스트 추가
-      this.pageList.push({ title: "리스트추가["+this.pageList.length+"]" });
-    },
-    removePage(index) { // 페이지 리스트 삭제
-      this.pageList.splice(index,1);
-    },
-    listToggle() { // 페이지 리스트 Show/Hide
-      this.isShowList = !this.isShowList;
-      this.toggleTitle = (this.isShowList ? "숨기기" : "보이기");
+    parentEditAreaUpdate(pageList) {
+      this.pageList = pageList;
     }
   }
 }
+
 </script>
 
 <style scoped>
@@ -113,35 +91,7 @@ export default {
     display: flex;
     justify-content: space-between;
   }
-  section > .page-view > div {
-    display: flex;
-  }
-  section > .page-view > div > .page-view-list {
-    width: 90%;
-    height: 200px;
-    display: flex;
-    border: 1px solid black;
-  }
-  section > .page-view > div > .page-view-list > .page-view-col {
-    border: 1px solid black;
-    width: 130px;
-  }
-  section > .page-view > div > .page-add-area {
-    border: 1px solid black;
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  section > .page-view > .page-view-toggle {
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  section > .page-view > .page-view-toggle > button {
-    margin: 5px;
-  }
+
   /*********** footer ***********/
   footer {
     width:100%;
