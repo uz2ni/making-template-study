@@ -5,7 +5,7 @@
       <li>
         <li-comp type="liDepth1">타이틀</li-comp>
         <ul class="sideBarlist2">
-          <li><li-comp type="liDepth2">타이틀 텍스트</li-comp></li>
+          <li @click="$bus.$emit('title1'); $store.commit('increment')"><li-comp type="liDepth2">타이틀 텍스트</li-comp></li>
           <li><li-comp type="liDepth2">본문형 텍스트</li-comp></li>
           <li><li-comp type="liDepth2">목록형 텍스트</li-comp></li>
         </ul>
@@ -46,7 +46,7 @@
       <li>
         <li-comp type="liDepth1">구분선</li-comp>
         <ul class="sideBarlist2">
-          <li><li-comp type="liDepth2">공백</li-comp></li>
+          <li @click="$bus.$emit('line'); "><li-comp type="liDepth2">공백</li-comp></li>
           <li><li-comp type="liDepth2">실선</li-comp></li>
           <li><li-comp type="liDepth2">점선</li-comp></li>
         </ul>

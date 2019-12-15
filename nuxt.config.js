@@ -38,6 +38,12 @@ module.exports = {
       }
     }
     //extractCSS: true // [19.10.25]ann - css사용 시 추가
-  }
-}
+  },
+  /*
+  ** Plugins to load before mounting the App
+  */
+  plugins: [
+    '~/plugins/bus'
+  ]
+};
 

@@ -11,6 +11,7 @@
         </ul>
       </li>
       <li>
+
         <a href="#" @click.prevent="active2 = !active2">이미지<span class="arrowDown" v-show="!active2"></span><span class="arrowUp" v-show="active2"></span></a>
         <ul class="sideBarlist2" v-show="active2">
           <li><a href="#">이미지<span class="off"></span></a></li>
